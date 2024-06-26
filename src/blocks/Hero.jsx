@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Hero(heading, text, backgroundImage) {
+export default function Hero({heading, text, backgroundImage}) {
   return (
     <div>
       <h2>{heading}</h2>
-      <p>{test}</p>
+      <p>{text}</p>
     </div>
   );
 }
