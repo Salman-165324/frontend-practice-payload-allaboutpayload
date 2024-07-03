@@ -1,17 +1,20 @@
-import { blocks } from "@/blocks/blockList";
-import React from "react";
+import { blocks } from '@/blocks/blockList'
+import React from 'react'
 
 export default function RenderBlocks({layout}) {
-  console.log("Inside Render Blocks")
+
   return (
-    <div>
-      {layout.map((block, i) => {
-        console.log('Blocks', block)
-        const Block = blocks[block.blockType];
-        if (Block) {
-          return <Block key={block.id} {...block}></Block>;
-        }
-      })}
-    </div>
-  );
+    <>
+      {
+        layout.map((block) => {
+          
+          const Block = blocks[block.blockType];
+          if(Block){
+            console.log("A single Block",block)
+            return <Block key={block.id} {...block}></Block>
+          }
+        })
+      }
+    </>
+  )
 }
