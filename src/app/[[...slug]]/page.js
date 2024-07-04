@@ -9,7 +9,8 @@ export async function generateStaticParams() {
   // console.log("All the pages Data",pagesData)
 
   return pagesData.docs.map(({ slug }) => {
-    slug: slug === 'index' ? ['index']:slug ;
+    slug: slug !=='index' ? slug.split("/") : false;
+    console.log("Slug first", slug)
   });
 }
 
@@ -21,9 +22,9 @@ const  getPageData  = async (slug)  => {
  
 }
 export default async function page({ params }) {
-  const {slug} = params; 
+  console.log("Slug", params.slug)
+  const slug = params.slug || 'index'; 
   const pageData = await getPageData(slug); 
-  console.log("A single page data", pageData);
   return <>
     <RenderBlocks layout={pageData?.layout}></RenderBlocks>
   </>;
